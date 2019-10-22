@@ -1,7 +1,7 @@
 # e7_validation
 A repository to store all codes used to validate e7_tools image reconstruction against the Siemens online reconstruction software. The data is collected from a Ge-68 doped plastic NEMA IQ phantom.
 
-*The following intro is copied from the first e7_validation iPython Notebook...*
+*The following intro is adapted from the first e7_validation iPython Notebook...*
 
 ## Extracting the data...
 
