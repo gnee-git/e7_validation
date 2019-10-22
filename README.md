@@ -21,7 +21,7 @@ The file `writeLifexPatients.py` writes the LIFEx script for all images to be in
 
 The file `e7_validation_functions.py` stores some of the functions created in `e7_validation.ipynb` for easier use in subssequent iPython Notebooks (starting with Pt III).
 
-`e7_validation.ipynb` was my first attempt at the validation process, started on 11th October 2019. Using the initial dataset, I decided that my first attempts at creating realistic ROIs for the background and spheres of the NEMA phantom were inaccurate (I put this down to creating an ROI with 'free' voxels).
+`e7_validation_pt1.ipynb` was my first attempt at the validation process, started on 11th October 2019. Using the initial dataset, I decided that my first attempts at creating realistic ROIs for the background and spheres of the NEMA phantom were inaccurate (I put this down to creating an ROI with 'free' voxels).
 
 `e7_validation_pt2.ipynb` is the second notebook, started on 15th October 2019. Here I work with carefully redefined ROIs, and also redefine the gray level bins in the LIFEx script. I explore the impact of these changes to the previous data. New plots show the expected changes well, with the largest maximum percentage differences over all ROIs of around 2% in some texture matrix metrics.
 
