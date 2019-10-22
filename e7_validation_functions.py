@@ -32,6 +32,8 @@
 #   The task of "import_e7val_data" is to:
 #          -  import all .xls files as a list of pandas dataframes
 #          -  output this list alongside a pandas dataframe version of the patientListLog
+#      ** UPDATE 20/10/19 ** 
+#          -  included ability to switch between .xls and .csv depending on datafile format   
 #
 #   "get_xydata" then creates:
 #          - ylist; a list of non-string, non-zero features extracted by LIFEx
@@ -58,9 +60,9 @@ import pandas as pd
 
 def import_e7val_data(dataPrefix,datafile_type="xls"):
 
-    if datafile_type not in ["csv","xls"]:
+    # Check for valid datafile format, default is .xls
+    if datafile_type not in ["csv","xls"]:   # i.e. if format isn't accounted for, we raise error and exit
         raise NameError
-        
     else:
         pass
         
