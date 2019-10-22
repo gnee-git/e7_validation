@@ -52,7 +52,27 @@ print("\nWriting LIFEx patient script to \"patientList_{}.txt\"...".format(study
 # This preamble contains the info required to read DICOM images into LIFEx as the same format
 # Some of this might have to be changed at a later date
 # Taken from p16 of "TextureUserGuide.pdf"
-of.write("# start of file\n\n# Common\n\tLIFEx.texture.BinSize=3.125\n\tLIFEx.texture.NbGrey=128.0\n\tLIFEx.texture.SessionCsv=/home/gn/data/{}.csv\n\n# Absolute\n\tLIFEx.texture.ButtonAbsolute=true\n\tLIFEx.texture.MinBound=0.0\n\tLIFEx.texture.MaxBound=400.0\n\n# RelativeMeanSd\n\tLIFEx.texture.ButtonRelativeMeanSd=false\n\n# RelativeMinMax\n\tLIFEx.texture.ButtonRelativeMinMax=false\n\n# DistanceWithNeighbours\n\tLIFEx.texture.GLCM.DistanceWithNeighbours=1\n\n".format(studyName))
+of.write("# start of file\n\n")
+
+# BIN SIZE DESCRIPTION - this should be changed depending on the voxel values in your images.
+# Note that this will depend also on base voxel units.
+of.write("# Common\n")
+of.write("\tLIFEx.texture.BinSize=0.25\n")         # describes width of bins in terms of base unit
+of.write("\tLIFEx.texture.NbGrey=100.0\n")          # the number of gray levels 
+of.write("\tLIFEx.texture.SessionCsv=/home/gn/data/{}.csv\n\n".format(studyName))
+
+of,write("# Absolute\n"
+of.write("\tLIFEx.texture.ButtonAbsolute=true\n")
+of.write("\tLIFEx.texture.MinBound=0.0\n")          # define the absolute bounds of gray level definition
+of.write("\tLIFEx.texture.MaxBound=25.0\n\n")
+
+# More necessary stuff here - leave this as it is for now.
+of.write("# RelativeMeanSd\n")
+of.write("\tLIFEx.texture.ButtonRelativeMeanSd=false\n\n")
+of.write("# RelativeMinMax\n")
+of.write("\tLIFEx.texture.ButtonRelativeMinMax=false\n\n")
+of.write("# DistanceWithNeighbours\n")
+of.write("\tLIFEx.texture.GLCM.DistanceWithNeighbours=1\n\n")
 
 
 # IMPORTANT
