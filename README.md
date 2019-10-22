@@ -15,7 +15,7 @@ Separate studies should be performed with LIFEx vs other radiomics feature extra
 
 7 ROIs were created in LIFEx - one for the NEMA phantom background, and 6 for the 6 largest spheres. LIFEx extracts simulateously every feature (conventional, histogram, shape, GLCM, GLRLM, NGLDM & GLZLM - see https://www.lifexsoft.org/ resources for more details, or alternatively https://pyradiomics.readthedocs.io/en/latest/ ) for each ROI in each image. 
 
-The comparison was initially attempted by working out a "maximum percentage difference" between metrics in the e7-reconstructed and the scanner-reconstructed images; * the maximum value of e.g. 100 x (val(scanner) - val(e7))/val(scanner) across all ROIs as taken from images equivalently reconstructed using each system *.
+The comparison was initially attempted by working out a "maximum percentage difference" between metrics in the e7-reconstructed and the scanner-reconstructed images; *the maximum value of e.g. 100 x (val(scanner) - val(e7))/val(scanner) across all ROIs as taken from images equivalently reconstructed using each system*.
 
 The file `writeLifexPatients.py` writes the LIFEx script for all images to be included in the study.
 
