@@ -126,7 +126,21 @@ def import_e7val_data(dataPrefix,datafile_type="xls"):
 
     
 
-def get_xydata(logFileDF,dataDFList,tof_flag=True,psf_flag=True,include_all_valid=True,scan_length=3.,calc_method="A"):
+def get_xydata(logFileDF,dataDFList,tof_flag=True,psf_flag=True,include_all_valid=True,scan_length=3.,calc_method="A",regions = "All"):
+
+    # If you want to analyse data in any specific region, can state with kwarg "regions"
+    # Also make available all regions (called by "All") or just the spheres ("Spheres")
+    regionlist = ["BG","C1","C2","C3","C4","C5","C6"]
+    start,stop=0,7
+    if regions == "All":
+        pass
+    elif regions == "Spheres":
+        start = 1
+        stop = 7
+    elif regions in regionlist:
+        regindex = regionlist.index(regions)
+        start = regindex
+        stop = regindex + 1
 
     # For pyradiomics, I'm not sure whether the small values in the "minimum" are artificialy 
     # inflating the "maxdiff" values. Therefore instead of doing the calculation with respect
@@ -179,7 +193,7 @@ def get_xydata(logFileDF,dataDFList,tof_flag=True,psf_flag=True,include_all_vali
                 y4h = []
                 for i in range(0,len(e7d4h)):
                     y4h.append(100*(scannerd4h[i]-e7d4h[i])/scannerd4h[i])
-                maxdiff.append(max([abs(y) for y in y3m+y4h]))
+                maxdiff.append(max([abs(y) for y in y3m[start:stop]+y4h[start:stop]]))
                 names.append(title)
         return maxdiff,names
 
@@ -199,6 +213,6 @@ def get_xydata(logFileDF,dataDFList,tof_flag=True,psf_flag=True,include_all_vali
                         y.append(calcMethodA(e7data[i],scannerdata[i]))
                     elif calc_method == "B":
                         y.append(calcMethodB(e7data[i],scannerdata[i]))
-                maxdiff.append(max([abs(yi) for yi in y]))
+                maxdiff.append(max([abs(yi) for yi in y[start:stop]]))
                 names.append(title)
         return maxdiff,names
