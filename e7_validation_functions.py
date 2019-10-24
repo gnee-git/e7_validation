@@ -126,7 +126,16 @@ def import_e7val_data(dataPrefix,datafile_type="xls"):
 
     
 
-def get_xydata(logFileDF,dataDFList,tof_flag=True,psf_flag=True,include_all_valid=True,scan_length=3.):
+def get_xydata(logFileDF,dataDFList,tof_flag=True,psf_flag=True,include_all_valid=True,scan_length=3.,calc_method="A"):
+
+    # For pyradiomics, I'm not sure whether the small values in the "minimum" are artificialy 
+    # inflating the "maxdiff" values. Therefore instead of doing the calculation with respect
+    # to just the scanner value (method A), I have included the capability of doing so with 
+    # respect to the mean of the scanner and e7 values (method B)
+    def calcMethodA(e,s):
+        return 100*(s-e)/s 
+    def calcMethodB(e,s):
+        return 200*(s-e)/(s+e)
     
     # so... "include_all_valid" is used as a Boolean switch to determine whether to use both 3 min and 4 hour
     # acquisitions in the data. If this is False, then it is required to set "scan_length" equal to the 
@@ -163,7 +172,10 @@ def get_xydata(logFileDF,dataDFList,tof_flag=True,psf_flag=True,include_all_vali
             if not all(isinstance(e,str) for e in  e7data+scannerdata+e7d4h+scannerd4h) and 0 not in scannerdata+scannerd4h and "PARAMS" not in title:
                 y3m = []
                 for i in range(0,len(e7data)):
-                    y3m.append(100*(scannerdata[i]-e7data[i])/scannerdata[i])
+                    if calc_method == "A":
+                        y3m.append(calcMethodA(e7data[i],scannerdata[i]))
+                    elif calc_method == "B"
+                        y3m.append(calcMethodB(e7data[i],scannerdata[i]))
                 y4h = []
                 for i in range(0,len(e7d4h)):
                     y4h.append(100*(scannerd4h[i]-e7d4h[i])/scannerd4h[i])
@@ -183,7 +195,10 @@ def get_xydata(logFileDF,dataDFList,tof_flag=True,psf_flag=True,include_all_vali
             if not all(isinstance(e,str) for e in  e7data+scannerdata) and 0 not in scannerdata and "PARAMS" not in title:
                 y = []
                 for i in range(0,len(e7data)):
-                    y.append(100*(scannerdata[i]-e7data[i])/scannerdata[i])
+                    if calc_method == "A":
+                        y.append(calcMethodA(e7data[i],scannerdata[i]))
+                    elif calc_method == "B"
+                        y.append(calcMethodB(e7data[i],scannerdata[i]))
                 maxdiff.append(max([abs(yi) for yi in y]))
                 names.append(title)
         return maxdiff,names
