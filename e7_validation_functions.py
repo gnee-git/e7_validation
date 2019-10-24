@@ -174,7 +174,7 @@ def get_xydata(logFileDF,dataDFList,tof_flag=True,psf_flag=True,include_all_vali
                 for i in range(0,len(e7data)):
                     if calc_method == "A":
                         y3m.append(calcMethodA(e7data[i],scannerdata[i]))
-                    elif calc_method == "B"
+                    elif calc_method == "B":
                         y3m.append(calcMethodB(e7data[i],scannerdata[i]))
                 y4h = []
                 for i in range(0,len(e7d4h)):
@@ -197,7 +197,7 @@ def get_xydata(logFileDF,dataDFList,tof_flag=True,psf_flag=True,include_all_vali
                 for i in range(0,len(e7data)):
                     if calc_method == "A":
                         y.append(calcMethodA(e7data[i],scannerdata[i]))
-                    elif calc_method == "B"
+                    elif calc_method == "B":
                         y.append(calcMethodB(e7data[i],scannerdata[i]))
                 maxdiff.append(max([abs(yi) for yi in y]))
                 names.append(title)
