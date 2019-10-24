@@ -19,7 +19,7 @@ The comparison was initially attempted by working out a "maximum percentage diff
 
 The file `writeLifexPatients.py` writes the LIFEx script for all images to be included in the study.
 
-The file `e7_validation_functions.py` stores some of the functions created in `e7_validation.ipynb` for easier use in subssequent iPython Notebooks (starting with Pt III).
+The file `e7_validation_functions.py` stores some of the functions created in `e7_validation.ipynb` for easier use in subsequent iPython Notebooks (starting with Pt III).
 
 `e7_validation_pt1.ipynb` was my first attempt at the validation process, started on 11th October 2019. Using the initial dataset, I decided that my first attempts at creating realistic ROIs for the background and spheres of the NEMA phantom were inaccurate (I put this down to creating an ROI with 'free' voxels).
 
